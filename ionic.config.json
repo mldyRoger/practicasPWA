@@ -1,0 +1,7 @@
+{
+  "name": "hola_p1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

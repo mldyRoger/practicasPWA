@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <div class="register-container">
+      <ion-card >
+        <ion-card-header color="secondary">
+          <ion-card-title>Practica 3 - Registro</ion-card-title>
+          <ion-card-subtitle>Ingresa tus datos</ion-card-subtitle>
+        </ion-card-header>  
+        <ion-card-content>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input formControlName="fullName" (ionBlur)="onFullNameCapital($event)"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('fullName') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Correo</ion-label>
+                <ion-input formControlName="mail" type="email"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('mail')?.invalid && registerForm.get('mail')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('mail') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Username</ion-label>
+                <ion-input formControlName="username" (ionBlur)="onUserNameLoweCase($event)"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('username') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('password') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Confirmar Contraseña</ion-label>
+                <ion-input formControlName="confirmPassword" type="password"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('confirmPassword') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Fecha de Nacimiento</ion-label>
+                <ion-input formControlName="birthDate" type="date"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('birthDate')?.invalid && registerForm.get('birthDate')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('birthDate') }}</p>
+                </ion-text>
+              </div>
+              
+            </ion-list>
+            <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Registrar</ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card> 
+    </div>
+  </div>
+</ion-content>
