@@ -42,17 +42,18 @@ export class HolaPage implements OnInit {
   ocultarInfo(){
     this.estaMostrandoInfo = false;
   }
-//Practica 2
+//Funcion asincrona para para enviar datos, en este se vallida si el formulario es valido de acuerdo 
+//a las valiudaciones que se hacen, si es valido se toman los datos del formulario como username y password.
 async  onSubmit() {
   await this.presentLoading();
-    if (this.registerForm.invalid) {
+    if (this.registerForm.invalid) { //Si es invalido retornar
       return;
     }else{
-      
+      //Pero si es valido tomar los datos del formulario
       let username = this.registerForm.get('username')?.value;
       const password = this.registerForm.get('password')?.value;
       username = username.toLowerCase();
-      //this.abrirModal(username, password);     
+           
     }
     setTimeout(async () => {
       await this.dismissLoading();
