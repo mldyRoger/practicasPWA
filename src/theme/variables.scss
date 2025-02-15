@@ -1,2 +1,17 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+ion-loading.loading-1 {
+    /*.spinner {
+      display: none;
+    }*/
+    .loading-wrapper {
+      background: transparent url('../assets/images/spinner1.gif') no-repeat center center;
+      background-size: 200px 200px; /*  */
+      padding-top: 200px; /* */
+      padding-bottom: 200px; /* */
+      padding-left: 200px;
+      padding-right: 200px;
+      /* */
+      box-shadow: none;
+    }
+  }

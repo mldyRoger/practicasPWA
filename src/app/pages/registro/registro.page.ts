@@ -96,7 +96,7 @@ export class RegistroPage implements OnInit {
       const value = event.target.value;
       this.registerForm.get('username')?.setValue(value.toLowerCase());
     }
-
+   //Validar que no tenga espacios
     noWhitespace(): ValidatorFn {
       return (control: AbstractControl): ValidationErrors | null => {
         if (control.value && control.value.includes(' ')) {
