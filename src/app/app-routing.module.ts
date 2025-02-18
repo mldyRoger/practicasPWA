@@ -32,6 +32,22 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'admin-users',
+    loadChildren: () => import('./pages/admin-users/admin-users.module').then( m => m.AdminUsersPageModule)
+  },
+  {
+    path: 'my-profile',
+    loadChildren: () => import('./pages/my-profile/my-profile.module').then( m => m.MyProfilePageModule)
+  },
+  {
+    path: 'admin-users-add',
+    loadChildren: () => import('./pages/admin-users-add/admin-users-add.module').then( m => m.AdminUsersAddPageModule)
+  },
+  {
+    path: 'admin-users-update',
+    loadChildren: () => import('./pages/admin-users-update/admin-users-update.module').then( m => m.AdminUsersUpdatePageModule)
+  },
 ];
 
 @NgModule({

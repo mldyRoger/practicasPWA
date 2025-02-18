@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Inicio
+      Mi perfil
     </ion-title>
     <!--<img src="assets/images/logoMobUTEQ.png" alt="Logo" class="img-logo mobile-only"/>-->
     <ion-buttons slot="end" class="desktop-only">
@@ -22,8 +22,25 @@
 
 
   <div id="container">
-    <strong>Has inciado sesion</strong>
-    <p>Bienvenido</p>
+    <div>
+      <strong>Correo electrónico:</strong>
+      <p>{{ email }}</p>
+    </div>
+
+    <div>
+      <strong>Rol:</strong>
+      <p>{{ rol }}</p>
+    </div>
+
+    <div>
+      <strong>Permisos:</strong>
+      <ul>
+        <li *ngFor="let permiso of permissions">{{ permiso }}</li>
+      </ul>
+    </div>
+
+    <ion-button color="danger" (click)="logout()">Cerrar sesión
+    </ion-button>
   </div>
 </ion-content>
 
@@ -45,3 +62,4 @@
     </ion-segment>
   </ion-toolbar>
 </ion-footer>
+

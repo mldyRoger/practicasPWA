@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 import { UserModalComponent } from 'src/app/componentes/user-modal/user-modal.component';
 import { ModalController } from '@ionic/angular';
+import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: 'app-registro',
@@ -23,6 +25,8 @@ export class RegistroPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private modalController: ModalController,
+    private authService: AuthService,
+    private router: Router,
   ){ }
 
   ngOnInit() {
@@ -45,10 +49,26 @@ export class RegistroPage implements OnInit {
       if (this.registerForm.invalid) {
         return;
       }else{
-        let username = this.registerForm.get('username')?.value;
-        const password = this.registerForm.get('password')?.value;
-        username = username.toLowerCase();
-        this.abrirModal(username, password);
+        const dataToSend = {
+          email: this.registerForm.get('mail')?.value,
+          username: this.registerForm.get('username')?.value,
+          password: this.registerForm.get('password')?.value
+        };
+        this.authService.register(dataToSend)
+      .subscribe( {
+        next: () => {
+          alert("Usuario registrado con éxito");
+          this.router.navigate(['/hola']);
+        },
+        error: error => {
+          console.error(error);
+          alert('Error al registrar el usuario, por favor intente de nuevo.');
+        }
+      });
+        //let username = this.registerForm.get('username')?.value;
+        //const password = this.registerForm.get('password')?.value;
+        //username = username.toLowerCase();
+       // this.abrirModal(username, password);
       }
     }
   //Abrir modal

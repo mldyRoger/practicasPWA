@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Admin
+    </ion-title>
+    <!--<img src="assets/images/logoMobUTEQ.png" alt="Logo" class="img-logo mobile-only"/>-->
+    <ion-buttons slot="end" class="desktop-only">
+      <ion-button (click)="goToHomePage()">
+        Inicio
+      </ion-button>
+      <ion-button (click)="goToAdminAddUserPage()">
+        Agregar
+      </ion-button>
+      <ion-button (click)="goToAdminUpdateUserPage()">
+        Modificar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <div id="container">
+    <strong>Lista de usuarios> </strong>
+    <p>Desliza</p>
+    <ion-list [inset]="true">
+      <ion-item-sliding *ngFor="let user of users">
+        <ion-item [button]="true">
+          <ion-label>{{user.email}}</ion-label>
+          <ion-icon name="chevron-back-outline" style="color:#b0b0b0"></ion-icon>
+        </ion-item>
+        <ion-item-options slot="end">
+          <ion-item-option color="tertiary" >
+            <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color="danger" expandable="true" >
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer class="mobile-only">
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="tabService.selectedTab">
+      <ion-segment-button value="home" (click)="goToHomePage()">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Inicio</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="add-user" (click)="goToAdminAddUserPage()">
+        <ion-icon name="person-add-outline"></ion-icon>
+        <ion-label>Agregar</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="update-user" (click)="goToAdminUpdateUserPage()">
+        <ion-icon name="create-outline"></ion-icon>
+        <ion-label>Modificar</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>
+
