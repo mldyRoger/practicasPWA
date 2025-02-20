@@ -12,7 +12,7 @@
       <ion-card >
         <ion-card-header color="secondary">
           <ion-card-title>Formulario de {{ !accion ? 'registro' : 'actualización' }}</ion-card-title>
-          <ion-card-subtitle>Ingresa los datos del nuevo usuario</ion-card-subtitle>
+          <ion-card-subtitle>Ingresa los datos del usuario</ion-card-subtitle>
         </ion-card-header>  
         <ion-card-content>
           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
