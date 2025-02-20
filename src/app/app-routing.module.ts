@@ -44,10 +44,6 @@ const routes: Routes = [
     path: 'admin-users-add',
     loadChildren: () => import('./pages/admin-users-add/admin-users-add.module').then( m => m.AdminUsersAddPageModule)
   },
-  {
-    path: 'admin-users-update',
-    loadChildren: () => import('./pages/admin-users-update/admin-users-update.module').then( m => m.AdminUsersUpdatePageModule)
-  },
 ];
 
 @NgModule({

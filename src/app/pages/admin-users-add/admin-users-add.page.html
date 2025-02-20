@@ -1,13 +1,88 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Agregar user</ion-title>
+    <ion-title>{{ !accion ? 'Agregar' : 'Actualizar' }} user</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Agregar user</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div>
+    <div >
+      <ion-row class="register-container">
+        <ion-col  size-md="6" size-sm="12" size-lg="4">
+      <ion-card >
+        <ion-card-header color="secondary">
+          <ion-card-title>Formulario de {{ !accion ? 'registro' : 'actualización' }}</ion-card-title>
+          <ion-card-subtitle>Ingresa los datos del nuevo usuario</ion-card-subtitle>
+        </ion-card-header>  
+        <ion-card-content>
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating">Correo</ion-label>
+                <ion-input formControlName="mail" type="email" [(ngModel)]="email"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('mail')?.invalid && registerForm.get('mail')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('mail') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Username</ion-label>
+                <ion-input formControlName="username" (ionBlur)="onUserNameLoweCase($event)" [(ngModel)]="username"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('username') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Password</ion-label>
+                <ion-input formControlName="password" type="password"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('password') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-label position="floating">Confirmar Contraseña</ion-label>
+                <ion-input formControlName="confirmPassword" type="password"></ion-input>
+              </ion-item>
+              <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('confirmPassword') }}</p>
+                </ion-text>
+              </div>
+
+              <ion-item>
+                <ion-select label="Elige rol" label-placement="floating" formControlName="rol" [(ngModel)]="rol">
+                  <ion-select-option value="MUfpN71zhd1E001jtRvn">Administrador</ion-select-option>
+                  <ion-select-option value="zvr5vVJCi93pjjzfF53l">Usuario común</ion-select-option>
+                </ion-select>
+              </ion-item>
+              <div *ngIf="registerForm.get('rol')?.invalid && registerForm.get('rol')?.touched">
+                <ion-text color="danger">
+                  <p>{{ getErrorMessage('rol') }}</p>
+                </ion-text>
+              </div>
+              
+            </ion-list>
+            <ion-button color="medium" (click)="return()">Cancelar</ion-button>
+            <div *ngIf="accion === 'update'">
+              <ion-button type="submit" [disabled]="registerForm.invalid">Actualizar usuario</ion-button>
+            </div>
+            <div *ngIf="!accion">
+              <ion-button type="submit" [disabled]="registerForm.invalid">Registrar usuario</ion-button>
+            </div>
+           
+          </form>
+        </ion-card-content>
+      </ion-card> 
+     </ion-col>
+     </ion-row>
+    </div>
+  </div>
 </ion-content>

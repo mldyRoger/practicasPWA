@@ -19,10 +19,10 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  //Servicio de registro, mediante post se envia al servidor de node.js que se conecta
+  //Servicio de registro y update, mediante post se envia al servidor de node.js que se conecta
   //a la base de datos
   register(registerForm: any){
-    return this.httpClient.post('http://localhost:3000/api/auth/registro', registerForm);
+    return this.httpClient.post('http://localhost:3000/api/auth/registerUpdate', registerForm);
   }
 //Servicio de login, mediante post se envia al servidor de node.js que se conecta
   //a la base de datos
@@ -36,11 +36,11 @@ export class AuthService {
         return user;
       }));
   }
-//Servicio obetener datos del usuario
+//Servicio obtener datos del usuario almacenado en memoria
   public get currentUserValue(): any {
     return this.currentUserSubject.value;
   }
-//Servicio cerrar sesion
+//Servicio cerrar sesion, y remover el currentUser en el almacenamiento
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);

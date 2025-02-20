@@ -3,6 +3,7 @@ import { TabService } from '../../services/tab.service';
 import { Router, NavigationEnd } from '@angular/router'; 
 import { AuthService } from "../../services/auth.service";
 import { jwtDecode } from 'jwt-decode';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-my-profile',
@@ -14,6 +15,9 @@ export class MyProfilePage implements OnInit {
   rol: string = ''; 
   email: string = ''; 
   permissions: any[] = [];
+  token: string = '';
+  private routerSubscription!: Subscription;
+
   constructor(public tabService: TabService,
       private router: Router,
       private authService: AuthService,) { 
@@ -23,7 +27,18 @@ export class MyProfilePage implements OnInit {
 
   ngOnInit() {
     //Se cargan los datos del usuario
-    this.loadDataUser()
+    //this.loadDataUser()
+    this.subscribeToRouterEvents();
+  }
+    //Subscripcion a eventos de router, al momento de cambiar de vista con router los datos deben acualizarse
+  //Es por ello que se debe subscribirse y ejecutar funciones
+  private subscribeToRouterEvents() {
+    this.routerSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.loadDataUser() //Cargamos la funcion de usuarios para obtener el array
+
+      }
+    });
   }
    //Se cargan los datos del usuarios logueado, del token se extrae los datos para almacenar en variables 
   //como el rol y los permisos
@@ -35,6 +50,7 @@ export class MyProfilePage implements OnInit {
       this.permissions = decoded.permissions; 
       this.rol = decoded.rol;
       this.email = decoded.email;
+      this.token = token;
     }
   }
     //Funcion para ir a la pagina de home en el tabs

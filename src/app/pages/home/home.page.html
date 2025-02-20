@@ -3,11 +3,11 @@
     <ion-title>
       Inicio
     </ion-title>
-    <!--<img src="assets/images/logoMobUTEQ.png" alt="Logo" class="img-logo mobile-only"/>-->
     <ion-buttons slot="end" class="desktop-only">
       <ion-button (click)="goToHomePage()">
         Inicio
       </ion-button>
+      <!-- Se valida que si es un usuario con rol Admin, puede ver la opcion de Admin -->
       <ion-button (click)="goToAdminPage()" *ngIf="rol === 'MUfpN71zhd1E001jtRvn'">
         Admin
       </ion-button>
@@ -34,6 +34,7 @@
         <ion-icon name="home-outline"></ion-icon>
         <ion-label>Inicio</ion-label>
       </ion-segment-button>
+      <!-- Se valida que si es un usuario con rol Admin, puede ver la opcion de Admin -->
       <ion-segment-button value="admin" (click)="goToAdminPage()" *ngIf="rol === 'MUfpN71zhd1E001jtRvn'">
         <ion-icon name="people-outline"></ion-icon>
         <ion-label>Admin</ion-label>

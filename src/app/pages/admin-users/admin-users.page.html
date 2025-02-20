@@ -8,11 +8,11 @@
       <ion-button (click)="goToHomePage()">
         Inicio
       </ion-button>
-      <ion-button (click)="goToAdminAddUserPage()">
-        Agregar
+      <ion-button (click)="goToAdminPage()" >
+        Admin
       </ion-button>
-      <ion-button (click)="goToAdminUpdateUserPage()">
-        Modificar
+      <ion-button (click)="goToMyProfilePage()">
+        Perfil
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -22,8 +22,16 @@
 
 
   <div id="container">
-    <strong>Lista de usuarios> </strong>
-    <p>Desliza</p>
+    <ion-grid>
+      <ion-row class="ion-justify-content-end">
+        <ion-button aria-label="Agregar nuevo usuario" (click)="goToAdminAddUserPage()" color="secondary">
+          Agregar
+          <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+    <strong>Lista de usuarios </strong>
+    <p>Desliza para ver opciones</p>
     <ion-list [inset]="true">
       <ion-item-sliding *ngFor="let user of users">
         <ion-item [button]="true">
@@ -31,11 +39,8 @@
           <ion-icon name="chevron-back-outline" style="color:#b0b0b0"></ion-icon>
         </ion-item>
         <ion-item-options slot="end">
-          <ion-item-option color="tertiary" >
+          <ion-item-option color="tertiary" (click)="updateUser(user.id, user.email, user.rol._path.segments[1], user.username)">
             <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
-          </ion-item-option>
-          <ion-item-option color="danger" expandable="true" >
-            <ion-icon slot="icon-only" name="trash"></ion-icon>
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
@@ -50,13 +55,13 @@
         <ion-icon name="home-outline"></ion-icon>
         <ion-label>Inicio</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="add-user" (click)="goToAdminAddUserPage()">
-        <ion-icon name="person-add-outline"></ion-icon>
-        <ion-label>Agregar</ion-label>
+      <ion-segment-button value="admin" (click)="goToAdminPage()" >
+        <ion-icon name="people-outline"></ion-icon>
+        <ion-label>Admin</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="update-user" (click)="goToAdminUpdateUserPage()">
-        <ion-icon name="create-outline"></ion-icon>
-        <ion-label>Modificar</ion-label>
+      <ion-segment-button value="profile" (click)="goToMyProfilePage()">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Perfil</ion-label>
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
