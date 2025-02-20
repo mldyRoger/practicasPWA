@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>hola</ion-title>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">hola</ion-title>
+      <ion-title size="large">Login</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -20,7 +20,10 @@
     
 
     <div>
-      <div class="register-container">
+      <div>
+        <div >
+          <ion-row class="register-container">
+            <ion-col  size-md="6" size-sm="12" size-lg="4">
         <ion-card >
           <ion-card-header color="secondary">
             <ion-card-title>Login</ion-card-title>
@@ -38,10 +41,14 @@
                   <ion-input formControlName="password" type="password"></ion-input>
                 </ion-item>
               </ion-list>
-              <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Iniciar</ion-button>
+              <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Iniciar sesion</ion-button>
+              <ion-button expand="full" color="warning" (click)="goToRegisterPage()">Registrarse</ion-button>
             </form>
           </ion-card-content>
         </ion-card> 
+       </ion-col>
+     </ion-row>
+    </div>
       </div>
     </div>
   </div>

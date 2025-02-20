@@ -13,6 +13,8 @@ import { NavController } from '@ionic/angular';
   standalone: false,
 })
 export class AdminUsersAddPage implements OnInit {
+//author: Rogelio Gudiño de León
+
 //Array que guarda los inputs tipo objeto, se define la validacion de cada input
   registerForm: FormGroup = this.formBuilder.group({
     mail: ['',[Validators.required, Validators.email, this.noWhitespace()]],

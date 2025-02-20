@@ -13,6 +13,7 @@ import { AuthService } from "../../services/auth.service";
   standalone: false,
 })
 export class HolaPage implements OnInit {
+//author: Rogelio Gudiño de León
  //Practica 1
   estaMostrandoInfo: boolean = false;
   //Practica 2
@@ -130,5 +131,9 @@ async  onSubmit() {
   //Se manda a llamar /home para mavegar a esa vista
   goToHomePage() {
     this.router.navigate(['/home']); //se navega a home
+  }
+
+  goToRegisterPage() {
+    this.router.navigate(['/registro']);
   }
 }

@@ -12,6 +12,8 @@ import { AuthService } from "../../services/auth.service";
   standalone: false,
 })
 export class RegistroPage implements OnInit {
+//author: Rogelio Gudiño de León
+
 //Array que guarda los inputs tipo objeto, se define la validacion de cada input
   registerForm: FormGroup = this.formBuilder.group({
     mail: ['',[Validators.required, Validators.email, this.noWhitespace()]],
@@ -132,5 +134,9 @@ export class RegistroPage implements OnInit {
         }
         return null; 
       };
+    }
+
+    goToLoginPage() {
+      this.router.navigate(['/hola']);
     }
 }

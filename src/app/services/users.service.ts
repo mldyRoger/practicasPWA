@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
+ //author: Rogelio Gudiño de León 
   private API_URL = 'http://localhost:3000/api/user/'; 
   constructor(private http: HttpClient) { }
 

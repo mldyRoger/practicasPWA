@@ -12,7 +12,10 @@
   </ion-header>
 
   <div>
-    <div class="register-container">
+    <div>
+      <div >
+        <ion-row class="register-container">
+          <ion-col  size-md="6" size-sm="12" size-lg="4">
       <ion-card >
         <ion-card-header color="secondary">
           <ion-card-title>Practica 3 - Registro</ion-card-title>
@@ -83,9 +86,13 @@
               
             </ion-list>
             <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Registrar</ion-button>
+            <ion-button expand="full" color="warning" (click)="goToLoginPage()">Ir a Iniciar sesion</ion-button>
           </form>
         </ion-card-content>
       </ion-card> 
+    </ion-col>
+    </ion-row>
+    </div>
     </div>
   </div>
 </ion-content>

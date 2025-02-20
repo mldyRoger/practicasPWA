@@ -25,3 +25,9 @@
   #container a {
     text-decoration: none;
   }
+  .register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

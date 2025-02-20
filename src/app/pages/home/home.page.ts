@@ -11,6 +11,7 @@ import { jwtDecode } from 'jwt-decode';
   standalone: false,
 })
 export class HomePage implements OnInit {
+//author: Rogelio Gudiño de León
   rol: string = ''; 
   permissions: any[] = [];
   constructor(public tabService: TabService,

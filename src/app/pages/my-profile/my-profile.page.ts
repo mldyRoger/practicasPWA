@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
   standalone: false,
 })
 export class MyProfilePage implements OnInit {
+//author: Rogelio Gudiño de León
   rol: string = ''; 
   email: string = ''; 
   permissions: any[] = [];
@@ -26,8 +27,6 @@ export class MyProfilePage implements OnInit {
       }
 
   ngOnInit() {
-    //Se cargan los datos del usuario
-    //this.loadDataUser()
     this.subscribeToRouterEvents();
   }
     //Subscripcion a eventos de router, al momento de cambiar de vista con router los datos deben acualizarse

@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
   standalone: false,
 })
 export class AdminUsersPage implements OnInit {
+  //author: Rogelio Gudiño de León
   users: any[] = [];
   private routerSubscription!: Subscription;
 

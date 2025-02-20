@@ -8,6 +8,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+//author: Rogelio Gudiño de León
+
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
   constructor(
